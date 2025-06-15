@@ -32,7 +32,7 @@
             if (this.clipboard == null) {
                 infoModalApp.$nextTick(() => {
                     this.clipboard = new ClipboardJS(`#${this.okBtnPros.attrs.id}`, {
-                        text: () => this.dbInbound.genLink(),
+                        text: () => this.dbInbound.genLink(allSettings),
                     });
                     this.clipboard.on('success', () => app.$message.success('复制成功'));
                 });

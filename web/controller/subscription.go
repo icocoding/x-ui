@@ -23,6 +23,7 @@ type SubscriptionController struct {
 	subscriptionService service.SubscriptionService
 	inboundService      service.InboundService
 	xrayService         service.XrayService
+	settingService      service.SettingService
 	vm                  *goja.Runtime
 }
 
@@ -162,6 +163,13 @@ func (a *SubscriptionController) getSubscriptionByToken(c *gin.Context) {
 		a.setOutput(c, 500, subList)
 		return
 	}
+	allSetting, _ := a.settingService.GetAllSetting()
+
+	allSettingJson, err := json.Marshal(allSetting)
+	if err != nil {
+		fmt.Printf("Marshal allSetting error: %v", err)
+		return
+	}
 
 	for _, inbound := range inbounds {
 		param, err := json.Marshal(inbound)
@@ -169,7 +177,7 @@ func (a *SubscriptionController) getSubscriptionByToken(c *gin.Context) {
 			fmt.Printf("Marshal error: %v", err)
 			continue
 		}
-		link, err := a.vm.RunString(fmt.Sprintf("genLink(%s)", string(param)))
+		link, err := a.vm.RunString(fmt.Sprintf("genLink(%s, %s)", string(param), string(allSettingJson)))
 		if err != nil {
 			fmt.Printf("genLink error: %v", err)
 			continue

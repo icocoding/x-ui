@@ -150,15 +150,16 @@ class DBInbound {
         }
     }
 
-    genLink() {
+    genLink(allSetting) {
         const inbound = this.toInbound();
-        return inbound.genLink(this.address, this.remark);
+        return inbound.genLink(this.address, this.remark, allSetting);
     }
 }
 
 class AllSetting {
 
     constructor(data) {
+        this.configConnectIp = '';
         this.configPortStart = 50000;
         this.configPortEnd = 60000;
         this.configCertDomain = "";

@@ -27,13 +27,12 @@ type Pager struct {
 }
 
 type AllSetting struct {
-
-
-	ConfigPortEnd         int    `json:"configPortEnd" form:"configPortEnd"`
-	ConfigPortStart       int    `json:"configPortStart" form:"configPortStart"`
-	ConfigCertFile        string `json:"configCertFile" form:"configCertFile"`
-	ConfigKeyFile         string `json:"configKeyFile" form:"configKeyFile"`
-	ConfigCertDomain        string `json:"configCertDomain" form:"configCertDomain"`
+	ConfigPortEnd    int    `json:"configPortEnd" form:"configPortEnd"`
+	ConfigPortStart  int    `json:"configPortStart" form:"configPortStart"`
+	ConfigConnectIp  string `json:"configConnectIp" form:"configConnectIp"`
+	ConfigCertFile   string `json:"configCertFile" form:"configCertFile"`
+	ConfigKeyFile    string `json:"configKeyFile" form:"configKeyFile"`
+	ConfigCertDomain string `json:"configCertDomain" form:"configCertDomain"`
 
 	WebListen          string `json:"webListen" form:"webListen"`
 	WebPort            int    `json:"webPort" form:"webPort"`

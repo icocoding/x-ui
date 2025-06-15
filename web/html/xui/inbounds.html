@@ -367,7 +367,7 @@
                 });
             },
             showQrcode(dbInbound) {
-                const link = dbInbound.genLink();
+                const link = dbInbound.genLink(this.allSettings);
                 console.log("link: ", link )
                 qrModal.show('二维码', link);
             },

@@ -16,6 +16,7 @@
 - 升级go1.22.2
 - go mod tidy
 
+
 ## 添加功能
 
 - 快捷配置
@@ -33,6 +34,6 @@
 
 ## 安装&升级
 
-```
+```shell
 bash <(curl -Ls https://github.com/icocoding/x-ui/releases/download/tools/install-v1.0.sh)
 ```

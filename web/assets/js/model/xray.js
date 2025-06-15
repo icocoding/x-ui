@@ -882,7 +882,7 @@ class Inbound extends XrayCommonClass {
         this.sniffing = new Sniffing();
     }
 
-    genVmessLink(address='', remark='') {
+    genVmessLink(address='', remark='', allSetting) {
         if (this.protocol !== Protocols.VMESS) {
             return '';
         }
@@ -936,6 +936,9 @@ class Inbound extends XrayCommonClass {
             }
         }
 
+        if (!ObjectUtil.isEmpty(allSetting)) {
+            address = allSetting.configConnectIp;
+        }
         let obj = {
             v: '2',
             ps: remark,
@@ -950,7 +953,7 @@ class Inbound extends XrayCommonClass {
             sni: sni,
             tls: this.stream.security,
         };
-        console.log('vmess', obj)
+        // console.log('vmess', obj)
         return 'vmess://' + base64(JSON.stringify(obj, null, 2));
     }
 
@@ -1045,9 +1048,9 @@ class Inbound extends XrayCommonClass {
         return `trojan://${settings.clients[0].password}@${address}:${this.port}#${encodeURIComponent(remark)}`;
     }
 
-    genLink(address='', remark='') {
+    genLink(address='', remark='', allSetting) {
         switch (this.protocol) {
-            case Protocols.VMESS: return this.genVmessLink(address, remark);
+            case Protocols.VMESS: return this.genVmessLink(address, remark, allSetting);
             case Protocols.VLESS: return this.genVLESSLink(address, remark);
             case Protocols.SHADOWSOCKS: return this.genSSLink(address, remark);
             case Protocols.TROJAN: return this.genTrojanLink(address, remark);

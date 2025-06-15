@@ -38,6 +38,7 @@
                     <a-tabs default-active-key="10">
                         <a-tab-pane key="10" tab="快捷配置">
                             <a-list item-layout="horizontal" style="background: white">
+                                <setting-list-item type="text" title="连接IP" desc="默认''(空,使用地址栏域名)" v-model="allSetting.configConnectIp"></setting-list-item>
                                 <setting-list-item type="number" title="入站起始端口" desc="默认10000" v-model.number="allSetting.configPortStart"></setting-list-item>
                                 <setting-list-item type="number" title="入站结束端口" desc="默认60000" v-model.number="allSetting.configPortEnd"></setting-list-item>
                                 <setting-list-item type="text" title="入站TLS证书公钥文件路径" desc="填写一个 '/' 开头的绝对路径" v-model="allSetting.configCertFile"></setting-list-item>
