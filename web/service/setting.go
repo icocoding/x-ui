@@ -22,7 +22,7 @@ var xrayTemplateConfig string
 
 var defaultValueMap = map[string]string{
 
-	"configPortStart":    "10000",
+	"configPortStart":    "50000",
 	"configPortEnd":      "60000",
 	"configCertDomain":   "",
 	"configCertFile":     "",

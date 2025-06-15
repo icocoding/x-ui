@@ -159,7 +159,7 @@ class DBInbound {
 class AllSetting {
 
     constructor(data) {
-        this.configPortStart = 10000;
+        this.configPortStart = 50000;
         this.configPortEnd = 60000;
         this.configCertDomain = "";
         this.configCertFile = "";

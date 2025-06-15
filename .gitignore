@@ -11,3 +11,4 @@ main
 .DS_Store
 bin/x-ui
 bin/upload.sh
+.DS_Store
