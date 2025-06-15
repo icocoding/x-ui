@@ -924,9 +924,15 @@ class Inbound extends XrayCommonClass {
             path = this.stream.grpc.serviceName;
         }
 
+        let sni = ''
+
         if (this.stream.security === 'tls') {
             if (!ObjectUtil.isEmpty(this.stream.tls.server)) {
-                address = this.stream.tls.server;
+                // address = this.stream.tls.server;
+                sni = this.stream.tls.server;
+                if (ObjectUtil.isEmpty(address)) {
+                    address = this.stream.tls.server;
+                }
             }
         }
 
@@ -941,8 +947,10 @@ class Inbound extends XrayCommonClass {
             type: type,
             host: host,
             path: path,
+            sni: sni,
             tls: this.stream.security,
         };
+        console.log('vmess', obj)
         return 'vmess://' + base64(JSON.stringify(obj, null, 2));
     }
 

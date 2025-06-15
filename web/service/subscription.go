@@ -87,7 +87,7 @@ func (s *SubscriptionService) CreateAndSaveInbounds(tx *gorm.DB, subscription *m
 			Enable:     subscription.Enable,
 			Protocol:   inbound.Protocol,
 			Sniffing:   inbound.Sniffing,
-			Remark:     fmt.Sprintf("订阅节点，请勿删除！copy-%d", sampleId),
+			Remark:     fmt.Sprintf("[%s]-[%d]节点, from: %d", subscription.Remark, i, sampleId),
 			UserId:     subscription.UserId,
 			ExpiryTime: subscription.ExpiryTime,
 			Tag:        fmt.Sprintf("subscription-%v", ports[i]),
